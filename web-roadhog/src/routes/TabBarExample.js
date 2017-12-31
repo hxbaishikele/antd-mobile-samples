@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'dva';
 import { TabBar } from 'antd-mobile';
 import { createForm } from 'rc-form';
+import FirstTab from './FirstTab/FirstTab';
 
 class TabBarExample extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class TabBarExample extends React.Component {
            }}
         >
           Click to show/hide tab-bar
+          <FirstTab/>
         </a>
         <a style={{ display: 'block', marginBottom: 600, color: '#108ee9' }}
            onClick={(e) => {
@@ -37,6 +39,15 @@ class TabBarExample extends React.Component {
         >
           Click to switch fullscreen
         </a>
+      </div>
+    );
+  }
+
+  render1Content(pageText) {
+    return (
+      <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
+        <div style={{ paddingTop: 60 }}>点击查询</div>
+          <FirstTab/>
       </div>
     );
   }
@@ -74,7 +85,7 @@ class TabBarExample extends React.Component {
             }}
             data-seed="logId"
           >
-            {this.renderContent('Life')}
+            {this.render1Content('Life')}
           </TabBar.Item>
           <TabBar.Item
             icon={
