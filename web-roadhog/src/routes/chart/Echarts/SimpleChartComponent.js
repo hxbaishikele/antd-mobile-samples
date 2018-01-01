@@ -33,10 +33,11 @@ class SimpleChartComponent extends React.Component{
     }
 
     // 从组件外传入的数据
-    const {datesIn,dataIn,volumesIn} = this.props;
+    const {datesIn,dataIn,volumesUpIn,volumesDownIn} = this.props;
     var dates = datesIn;
     var data = dataIn;
-    var volumes = volumesIn;
+    var volumesUp = volumesUpIn;
+    var volumesDown = volumesDownIn;
     var dataMA5 = calculateMA(5, data);
     var dataMA10 = calculateMA(10, data);
     var dataMA20 = calculateMA(20, data);
@@ -194,18 +195,34 @@ class SimpleChartComponent extends React.Component{
       series: [{
         name: 'Volume',
         type: 'bar',
+        stack: 'total',
         xAxisIndex: 1,
         yAxisIndex: 1,
         itemStyle: {
           normal: {
-            color: '#7fbe9e'
+            color: '#ef232a',
           },
           emphasis: {
             color: '#140'
           }
         },
-        data: volumes
+        data: volumesUp
       }, {
+        name: 'Volume',
+        type: 'bar',
+        stack: 'total',
+        xAxisIndex: 1,
+        yAxisIndex: 1,
+        itemStyle: {
+          normal: {
+            color: '#14b143',
+          },
+          emphasis: {
+            color: '#140'
+          }
+        },
+        data: volumesDown
+      },{
         type: 'candlestick',
         name: '日K',
         data: data,
